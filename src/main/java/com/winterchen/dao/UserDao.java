@@ -8,10 +8,9 @@ import java.util.List;
 
 public interface UserDao {
 
-
     int insert(UserDomain record);
 
-
-
     List<UserDomain> selectUsers();
+
+    void register(String name, String password);
 }

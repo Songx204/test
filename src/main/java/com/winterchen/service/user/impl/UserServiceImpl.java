@@ -32,11 +32,20 @@ public class UserServiceImpl implements UserService {
     * pageSize 每页显示的数据条数
     * */
     @Override
-    public PageInfo<UserDomain> findAllUser(int pageNum, int pageSize) {
+    public List<UserDomain> findAllUser() {
         //将参数传给这个方法就可以实现物理分页了，非常简单。
-        PageHelper.startPage(pageNum, pageSize);
-        List<UserDomain> userDomains = userDao.selectUsers();
-        PageInfo result = new PageInfo(userDomains);
-        return result;
+      return userDao.selectUsers();
+
+    }
+
+    @Override
+    public void update(String newPassword) {
+
+    }
+
+    @Override
+    public void register(String name, String password) {
+
+               userDao.register(name,password);
     }
 }

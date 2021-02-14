@@ -1,7 +1,8 @@
 package com.winterchen.controller;
 
-import com.github.pagehelper.PageHelper;
-import com.winterchen.model.UserDomain;
+import com.alibaba.fastjson.JSONObject;
+import com.winterchen.common.Message;
+import com.winterchen.common.Result;
 import com.winterchen.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,18 +19,16 @@ public class UserController {
     private UserService userService;
 
     @ResponseBody
-    @PostMapping("/add")
-    public int addUser(UserDomain user){
-        return userService.addUser(user);
+    @GetMapping("/all")
+    public Object findAllUser(){
+        return userService.findAllUser();
     }
 
     @ResponseBody
-    @GetMapping("/all")
-    public Object findAllUser(
-            @RequestParam(name = "pageNum", required = false, defaultValue = "1")
-                    int pageNum,
-            @RequestParam(name = "pageSize", required = false, defaultValue = "10")
-                    int pageSize){
-        return userService.findAllUser(pageNum,pageSize);
+    @PostMapping(value = "/update", produces = "application/json;charset=utf-8")
+    public Result update(@RequestBody  JSONObject json){
+        String name = json.getString("oldPassword");
+        return new Result(200,Message.SUCCESS,1);
     }
+
 }

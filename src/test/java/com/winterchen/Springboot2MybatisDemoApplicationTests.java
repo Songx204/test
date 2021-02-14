@@ -1,5 +1,6 @@
 package com.winterchen;
 
+import com.winterchen.model.UserDomain;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +12,7 @@ public class Springboot2MybatisDemoApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
 	}
 
 }

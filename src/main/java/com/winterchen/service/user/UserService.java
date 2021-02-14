@@ -12,5 +12,9 @@ public interface UserService {
 
     int addUser(UserDomain user);
 
-    PageInfo<UserDomain> findAllUser(int pageNum, int pageSize);
+    List<UserDomain> findAllUser();
+
+     void update(String newPassword);
+
+     void register(String name, String password);
 }
